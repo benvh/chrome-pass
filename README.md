@@ -11,31 +11,39 @@ Fetching a password will actually call ```$ pass show <hostname>/<username>``` a
 
 
 ## Installing
-Remind me to create some install scripts...
 
 #### Chrome extension
 * Open *chrome://extensions* in a new tab
 * Enable developer mode if it is disabled (there is a checkbox on the top of the page somewhere...)
 * Click *load unpacked extensions* and add the *extensions* folder found in the root of this project
 
-#### Build native app
+### Quick and dirty install script
+* Once you have installed the chrome extension, chrome should have assigned it an ID.
+* Copy it.
+* Replace the placeholder ID inside install.sh with your extension ID.
+* run install.sh
+
+
+### Doing it by hand
+You can always do all this stuff yourself...! Here's how:
+
+#### 1. Build native app
 * browse to the project root using your favorite terminal
 * ```$ go build -o chrome_pass```  make sure the output is **chrome_pass** and not **chrome-pass**. Chrome doesn't like hyphens for some reason...
 
-#### Update the native messaging host config
+#### 2. Update the native messaging host config
 * edit the *tech.benvh.chrome_pass.json* file
 * replace ${EXTENSION_ID} with the extension id of chrome-pass found in your chrome extensions page
 * replace ${BINARY_PATH} with the path to the recently build chrome_pass binary
 
-#### "Install" the native messaging host config
+#### 3. "Install" the native messaging host config
 Copy the *tech.benvh.chrome_pass.json* file into your chrome NativeMessagingHosts dir
 
-It should be in one of the follow locations (if you're using regular chrome instead of chromium replace chromium with google-chrome)
+It should be one of the following locations 
 
 ```
-$HOME/.chromium/NativeMessagingHosts
+$HOME/.google-chrome/NativeMessagingHosts
 $HOME/.config/chromium/NativeMessagingHosts
-$XDG_CONFIG_HOME/chromium/NativeMessagingHosts
 ```
 
 * If it doesn't work right away restart chrome or reload the extension
