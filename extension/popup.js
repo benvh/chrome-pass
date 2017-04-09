@@ -9,7 +9,7 @@
     function FetchActiveTabHostname() {
         return new Promise(function(resolve, reject) {
             chrome.tabs.executeScript({ code: 'location.host' }, function(result) {
-                resolve(result[0]);
+                resolve(result[0].replace(/^www\./, ''));
             }); 
         });
     }
