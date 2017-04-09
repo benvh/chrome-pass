@@ -88,10 +88,15 @@
      * TODO: Make this smarter?
      */
     function InjectUsernameAndPassword(username, password) {
-        const injectUsernameScript = 'document.activeElement.value = "' + username + '";';
-        const injectPasswordScript = 'document.querySelector("input\[type=\\"password\\"\]").value = "' + password + '";';
-        chrome.tabs.executeScript({ code: injectUsernameScript });
-        chrome.tabs.executeScript({ code: injectPasswordScript });
+        try {
+            const injectUsernameScript = 'document.activeElement.value = "' + username + '";'; 
+            const injectPasswordScript = 'document.querySelector("input\[type=\\"password\\"\]").value = "' + password + '";';
+            chrome.tabs.executeScript({ code: injectUsernameScript });
+            chrome.tabs.executeScript({ code: injectPasswordScript });
+        } catch(e) {
+            // TODO: Show some error message in the popup
+            console.log(e);
+        }
     }
 
 
