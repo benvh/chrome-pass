@@ -10,21 +10,25 @@ github.com (if there are any).
 Fetching a password will actually call ```$ pass show <hostname>/<username>``` and return its value.
 
 
-## Installing
 
-#### Chrome extension
+## Chrome extension
+First thing you'll have to do is install the chrome extension: 
+
 * Open *chrome://extensions* in a new tab
 * Enable developer mode if it is disabled (there is a checkbox on the top of the page somewhere...)
 * Click *load unpacked extensions* and add the *extensions* folder found in the root of this project
 
-### Quick and dirty install script
+## Quick and dirty install script
+There's an install script included to install the native messaging host binary. You have to add your chrome extension ID manually though...
+
 * Once you have installed the chrome extension, chrome should have assigned it an ID.
 * Copy it.
 * Replace the placeholder ID inside install.sh with your extension ID.
 * run install.sh
 
 
-### Doing it by hand
+
+## Doing it by hand
 You can always do all this stuff yourself...! Here's how:
 
 #### 1. Build native app
