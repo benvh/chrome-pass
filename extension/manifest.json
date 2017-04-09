@@ -11,6 +11,13 @@
         "default_icon": "key-icon.png"
     },
 
+    "content_scripts": [ 
+        {
+            "matches": ["http://*/*", "https://*/*"],
+            "js": ["injector.js"]
+        }
+    ],
+
     "permissions": [
         "nativeMessaging",
         "activeTab",

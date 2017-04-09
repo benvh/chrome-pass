@@ -18,7 +18,7 @@
      * Send a native message and await the native messaging host's response
      *
      * @param {Object} message any jsonifiable data
-     * @returns {Promise} resolves to the first responsive received after sending the message
+     * @returns {Promise} resolves to the first response received after sending the message
      */
     function SendNativeMessage(message) {
         return new Promise(function(resolve, reject) {
@@ -56,7 +56,6 @@
                 return response.data.usernames;
             })
             .then(function(usernames) {
-                console.log(usernames)
                 usernames.forEach(function(username) {
                     var div = document.createElement('div');
                     div.classList.add('username-entry');
@@ -84,19 +83,12 @@
     }
 
     /**
-     * Injects the username in the currently active field and inserts the password in the first password field it finds
-     * TODO: Make this smarter?
+     * Call our injector content-script
      */
     function InjectUsernameAndPassword(username, password) {
-        try {
-            const injectUsernameScript = 'document.activeElement.value = "' + username + '";'; 
-            const injectPasswordScript = 'document.querySelector("input\[type=\\"password\\"\]").value = "' + password + '";';
-            chrome.tabs.executeScript({ code: injectUsernameScript });
-            chrome.tabs.executeScript({ code: injectPasswordScript });
-        } catch(e) {
-            // TODO: Show some error message in the popup
-            console.log(e);
-        }
+        chrome.tabs.query({ active: true, currentWindow: true }, activeTabs => {
+            chrome.tabs.sendMessage(activeTabs[0].id, { action: 'inject:username_password', username, password });
+        });
     }
 
 
@@ -108,6 +100,13 @@
             .then(function(hostname) {
                 ListUsernamesForHostname(hostname);
             });
+
+    });
+
+    /**
+     * Listen for messages from our injector content script
+     */
+    chrome.runtime.onMessage.addListener(message => {
 
     });
 

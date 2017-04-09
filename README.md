@@ -41,7 +41,7 @@ $XDG_CONFIG_HOME/chromium/NativeMessagingHosts
 * If it doesn't work right away restart chrome or reload the extension
 
 ## Usage
-Once installed the extension should show up as a button.
+Once installed, the extension should show up as a button.
 
 * Visit a website with which you want to authenticate
 * Click the chrome-pass button. If there are any usernames registered for the current hostname they should show up
