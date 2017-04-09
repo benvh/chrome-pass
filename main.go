@@ -1,5 +1,10 @@
 package main
 
+import (
+	"os/user"
+	"path/filepath"
+)
+
 type ActionRequestMessage struct {
 	Action    string                 `json:"action"`
 	Arguments map[string]interface{} `json:"arguments"`
@@ -12,7 +17,8 @@ type ActionResponseMessage struct {
 }
 
 func main() {
-	pass := NewPassService("/home/ben/.password-store")
+	usr, _ := user.Current()
+	pass := NewPassService(filepath.Join(usr.HomeDir, ".password-store"))
 	actionMessage := ReadNativeActionRequestMessage()
 
 	if actionMessage.Action == "list_host_usernames" {
