@@ -7,7 +7,8 @@
 
     "browser_action": {
         "default_title": "Pass",
-        "default_popup": "popup.html"
+        "default_popup": "popup.html",
+        "default_icon": "key-icon.png"
     },
 
     "permissions": [
