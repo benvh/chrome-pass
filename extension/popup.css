@@ -1,0 +1,22 @@
+.username-entry {
+    cursor: pointer;
+    padding: .5em 1em;
+    min-width: 10em;
+}
+
+.username-entry:hover {
+    background-color: #E7EFFF;
+}
+
+.error {
+    min-width: 15em;
+    padding: .5em; 1em;
+    color: #2C3645;
+
+}
+
+.error-sad {
+    font-weight: bold;
+    font-size: 1.4em;
+    color: #9C231F;
+}
