@@ -1,0 +1,9 @@
+{
+    "name": "tech.benvh.chrome_pass",
+    "description": "Chrome pass Extensions",
+    "path": "${BINARY_PATH}",
+    "type": "stdio",
+    "allowed_origins": [
+        "chrome-extension://${EXTENSION_ID}/"
+    ]
+}

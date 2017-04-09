@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+
+    "name": "Chrome pass extension",
+    "description": "Integrate the awesome pass tool with Chrome",
+    "version": "1.0",
+
+    "browser_action": {
+        "default_title": "Pass",
+        "default_popup": "popup.html"
+    },
+
+    "permissions": [
+        "nativeMessaging",
+        "activeTab",
+        "tabs"
+    ]
+}
+
