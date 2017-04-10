@@ -10,7 +10,7 @@
         return new Promise((resolve, reject) => {
             chrome.tabs.executeScript({ code: 'location.host' }, result =>{
                 if(result) {
-                    resolve(result[0].replace(/^www\./, ''));
+                    resolve(result[0].replace(/^www\./, '').replace(/:[0-9]+$/, ''));
                 } else {
                     if(chrome.runtime.lastError) {
                         reject(chrome.runtime.lastError.message);
